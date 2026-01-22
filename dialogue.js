@@ -1372,26 +1372,6 @@ window.dialogue_beeBear=function(player,items){
         player.updateInventory()
     }
 
-        
-// Safe bee multiplier — waits for the game to load
-(function waitForPlayer() {
-    if (typeof player === 'undefined' || !player.convertHoneyFromBees) {
-        setTimeout(waitForPlayer, 500); // check again in 0.5s
-        return;
-    }
 
-    const originalConvertHoney = player.convertHoneyFromBees;
-
-    player.convertHoneyFromBees = function(...args) {
-        const baseHoney = originalConvertHoney.apply(this, args);
-        const boostedHoney = baseHoney * 1000;
-        this.honey += boostedHoney - baseHoney;
-        this.updateInventory();
-        console.log(`Bee conversion multiplied! Gained ${boostedHoney} honey`);
-        return boostedHoney;
-    };
-
-    console.log("Bee honey multiplier active! x1000");
-})();
 
 
